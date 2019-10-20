@@ -8,10 +8,10 @@ const userRoutes = require("./routes/user");
 const bidRoutes = require("./routes/bids");
 const bountyRoutes = require("./routes/bounty");
 const app = express();
-
+// mongodb+srv://agrawalarpit14:<password>@in-out-hbqjd.mongodb.net/test?retryWrites=true&w=majority
 mongoose
   .connect(
-    "mongodb://localhost:27017/maverics102", { useNewUrlParser: true, useUnifiedTopology: true }
+    "mongodb+srv://agrawalarpit14:M694Ut48Ndbu07oc@in-out-hbqjd.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
     console.log("Connected to database!");
@@ -22,7 +22,8 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/images", express.static(path.join("backend/images")));
+app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/", express.static(path.join(__dirname, "angular")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -41,5 +42,7 @@ app.use("/api/ideas", ideasRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/bid", bidRoutes);
 app.use("/api/bounty", bountyRoutes);
-
+app.use((req, res , next) => {
+  res.sendFile(path.join(__dirname, "angular", "index.html"));
+});
 module.exports = app;
