@@ -1,10 +1,33 @@
+<div class="col-md-6 mt-3 mx-auto">
+<h3 class="caption text-center"> Add your latest Hack here! </h3>
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="form" (submit)="onSaveIdea()" *ngIf="!isLoading">
+    
     <mat-form-field>
-      <input matInput type="text" formControlName="title" placeholder="Idea Title">
+      <input matInput type="text" formControlName="title" placeholder="Title">
       <mat-error *ngIf="form.get('title').invalid">Please enter a idea title.</mat-error>
     </mat-form-field>
+    
+    <mat-form-field>
+      <textarea matInput rows="4" formControlName="description" placeholder="Description"></textarea>
+      <mat-error *ngIf="form.get('description').invalid">Please enter a idea description.</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-select placeholder="Category" formControlName="category">
+          <mat-option value="Software">Software</mat-option>
+          <mat-option value="Hardware">Hardware</mat-option>
+        </mat-select>
+        <!-- <mat-label translate>Category</mat-label>
+        <select mat-select formControlName="category" required>
+            <option mat-option value="{{ 'Software' }}">Software</option>
+            <option mat-option value="{{ 'Hardware' }}">Hardware</option>
+        </select> -->
+        <!-- <input matInput type="text" formControlName="category" placeholder="Category"> -->
+      <!-- <mat-error *ngIf="form.get('category').invalid">Please enter a idea category.</mat-error> -->
+    </mat-form-field>  
+    
     <div>
       <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
       <input type="file" #filePicker (change)="onImagePicked($event)">
@@ -12,10 +35,44 @@
     <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
       <img [src]="imagePreview" [alt]="form.value.title">
     </div>
+
     <mat-form-field>
-      <textarea matInput rows="4" formControlName="content" placeholder="Idea Content"></textarea>
-      <mat-error *ngIf="form.get('content').invalid">Please enter a idea title.</mat-error>
+        <input matInput type="text" formControlName="associated_hackathon" placeholder="Associated Hackathon">
+      <mat-error *ngIf="form.get('associated_hackathon').invalid">Please enter the hackathon your hack is asccociated with.</mat-error>
+    </mat-form-field>  
+
+
+    <mat-form-field>
+        <input matInput type="text" formControlName="demo_link" placeholder="Demo Link">
+      <mat-error *ngIf="form.get('demo_link').invalid">Please enter the demo link.</mat-error>
+    </mat-form-field>  
+
+    <mat-form-field>
+        <input matInput type="text" formControlName="badge" placeholder="Badges">
+      <mat-error *ngIf="form.get('badge').invalid">Please show your badges.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" formControlName="stack_materials" placeholder="Software Stack/ Hardware Materials">
+      <mat-error *ngIf="form.get('stack_materials').invalid">Please add comma seperated names of inputs.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" formControlName="labels" placeholder="Labels">
+      <mat-error *ngIf="form.get('labels').invalid">Add labels to define speciality and progress of your code.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" formControlName="meta_tags" placeholder="Meta Tags">
+      <mat-error *ngIf="form.get('meta_tags').invalid">Please add meta tags.</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <input matInput type="text" formControlName="team_members" placeholder="Team Members">
+      <mat-error *ngIf="form.get('team_members').invalid">Please add comma seperated team members.</mat-error>
     </mat-form-field>
     <button mat-raised-button color="accent" type="submit">Save Idea</button>
   </form>
 </mat-card>
+</div>

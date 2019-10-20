@@ -5,12 +5,13 @@ const mongoose = require("mongoose");
 
 const ideasRoutes = require("./routes/ideas");
 const userRoutes = require("./routes/user");
-
+const bidRoutes = require("./routes/bids");
+const bountyRoutes = require("./routes/bounty");
 const app = express();
 
 mongoose
   .connect(
-    "mongodb://localhost:27017/maverics101", { useNewUrlParser: true, useUnifiedTopology: true }
+    "mongodb://localhost:27017/maverics102", { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
     console.log("Connected to database!");
@@ -38,5 +39,7 @@ app.use((req, res, next) => {
 
 app.use("/api/ideas", ideasRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/bid", bidRoutes);
+app.use("/api/bounty", bountyRoutes);
 
 module.exports = app;

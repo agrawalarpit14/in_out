@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Aclonica&display=swap');
 mat-form-field {
   width: 100%;
 }
 
 mat-spinner {
   margin: auto;
+}
+
+.caption{
+  font-family: 'Aclonica', sans-serif;
+  color: rgb(13, 95, 212);
 }

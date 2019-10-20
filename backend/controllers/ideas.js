@@ -4,10 +4,19 @@ exports.createIdea = (req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
   const idea = new Idea({
     title: req.body.title,
-    content: req.body.content,
+    description: req.body.description,
+    category: req.body.category,
     imagePath: url + "/images/" + req.file.filename,
-    creator: req.userData.userId
+    creator: req.userData.userId,
+    associated_hackathon: req.body.associated_hackathon,
+    demo_link: req.body.demo_link,
+    badge: req.body.badge,
+    stack_materials: req.body.stack_materials.split(','),
+    labels: req.body.labels.split(','),
+    meta_tags: req.body.meta_tags.split(','),
+    team_members: req.body.team_members.split(',')
   });
+  // console.log(idea)
   idea
     .save()
     .then(createdIdea => {
@@ -35,9 +44,17 @@ exports.updateIdea = (req, res, next) => {
   const idea = new Idea({
     _id: req.body.id,
     title: req.body.title,
-    content: req.body.content,
+    description: req.body.description,
+    category: req.body.category,
     imagePath: imagePath,
-    creator: req.userData.userId
+    creator: req.userData.userId,
+    associated_hackathon: req.body.associated_hackathon,
+    demo_link: req.body.demo_link,
+    badge: req.body.badge,
+    stack_materials: req.body.stack_materials.split(','),
+    labels: req.body.labels.split(','),
+    meta_tags: req.body.meta_tags.split(','),
+    team_members: req.body.team_members.split(',')
   });
   Idea.updateOne({ _id: req.params.id, creator: req.userData.userId }, idea)
     .then(result => {

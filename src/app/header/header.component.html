@@ -31,40 +31,62 @@
   <div class="main-header-area animated">
       <div class="classy-nav-container breakpoint-off">
           <div class="container">
-              <!-- Classy Menu -->
               <nav class="classy-navbar justify-content-between" id="rehomesNav">
 
-                  <!-- Logo -->
                   <a class="nav-brand" href="./index.html">
-                      <!-- <img src="./img/core-img/logo.png" alt=""> -->
-                  Ideas with Code</a>
+                      <img src="https://res.cloudinary.com/svp19/image/upload/v1571538395/inout%206.0/idea_logo_hvphwx.png" alt="Ideas Becho" style="max-height: 200px;">
+                  </a> 
 
-                  <!-- Navbar Toggler -->
                   <div class="classy-navbar-toggler">
                       <span class="navbarToggler"><span></span><span></span><span></span></span>
                   </div>
 
-                  <!-- Menu -->
                   <div class="classy-menu">
-                      <!-- Menu Close Button -->
                       <div class="classycloseIcon">
                           <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                       </div>
-                      <!-- Nav Start -->
                       <div class="classynav">
                           <ul id="nav">
-                              <li class="active"><a href="./index.html">Home</a></li>
-                              <li><a href="./rent.html">Recent</a></li>
-                              <li><a href="./about.html">About</a></li>
-                              <li><a href="./blog.html">Blog</a></li>
+                              <li>
+                                <span>
+                                  <button mat-button routerLink="/">Home</button>
+                                </span>
+                              </li>
+                              <li *ngIf="userIsAuthenticated">
+                                <a mat-button routerLink="/create" routerLinkActive="mat-accent" class="border border-rounded border-success text-success">New Idea</a>
+                              </li>
+                              <li>
+                                <span *ngIf="!userIsAuthenticated">
+                                  <button mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</button>
+                                </span>
+                              </li>
+                              <li *ngIf="!userIsAuthenticated">
+                                  <button mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</button>
+                              </li>
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    
+                                  </a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" routerLink="/about">About</a>
+                                    <div *ngIf="userIsAuthenticated">
+                                      <a class="dropdown-item" routerLink="/bids">Biddings</a>
+                                      <a class="dropdown-item" routerLink="/offers">Offers</a>
+                                      <a class="dropdown-item" routerLink="/bounty">Bounty</a>
+                                      <a class="dropdown-item" routerLink="/bounty-create">Create a bounty</a>
+                                      <div class="dropdown-divider"></div>
+                                      <span>
+                                        <button mat-button (click)="onLogout()">Logout</button>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </li>                              
                           </ul>
 
-                          <!-- Contact btn -->
                           <div class="contact-btn mt-3 mt-lg-0 ml-3 ml-lg-5">
-                              <a href="#">Login</a>
-                          </div>
+                            
+                            </div>
                       </div>
-                      <!-- Nav End -->
                   </div>
               </nav>
           </div>
@@ -72,3 +94,5 @@
   </div>
 </header>
 <!-- **** Header Area End **** -->
+
+<!-- Navigation --> 

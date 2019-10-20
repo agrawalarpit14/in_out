@@ -1,0 +1,33 @@
+<div class="col-12 col-lg-6 mx-auto my-5">
+    <h2 class="text-center my-2"> Offers for you! </h2>
+    <table mat-table [dataSource]="resultedColumns" class="mat-elevation-z8 text-center" style="width: 100%;">         
+        <ng-container matColumnDef="Product Name">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Title</th>
+            <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Price</th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="Approve">
+            <th mat-header-cell *matHeaderCellDef class="text-center text-success">Accept</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-button (click)="acceptBid(element._id)" *ngIf="element.approval == 0" class="btn btn-success">Approve</button>
+                <p *ngIf="element.approval == 1" class="text-success">Accepted</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Reject">
+            <th mat-header-cell *matHeaderCellDef class="text-center text-danger">Reject</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-button (click)="removeBid(element._id)" *ngIf="element.approval == 0" class="btn btn-danger">Reject</button>
+                <p *ngIf="element.approval == 2" class="text-danger">Rejected</p>
+            </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

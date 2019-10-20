@@ -14,6 +14,23 @@
   <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
   <link rel="icon" href="assets/template/img/core-img/favicon.png">
   <link rel="stylesheet" href="assets/template/style.css">
+
+  <script>
+      function myFunction() {
+        var input = document.getElementById("search");
+        var filter = input.value.toLowerCase();
+        var nodes = document.getElementsByClassName('target');
+      
+        for (i = 0; i < nodes.length; i++) {
+          if (nodes[i].innerText.toLowerCase().includes(filter)) {
+            nodes[i].style.display = "block";
+          } else {
+            nodes[i].style.display = "none";
+          }
+        }
+      }
+  </script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
   <app-root></app-root>

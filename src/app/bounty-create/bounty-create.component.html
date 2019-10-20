@@ -1,0 +1,38 @@
+<div class="row text-center">
+<div class="col-12 col-md-6 mx-auto">
+<h1 class="caption"> Create a Bounty! </h1>
+<mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Title</mat-label>
+    <input [formControl]="titleControl" type="text" placeholder="Enter your title"
+    matInput required>
+    <mat-error *ngIf="titleControl.invalid && titleControl.errors.required" translate>
+       Title is mandatory.
+    </mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Price</mat-label>
+    <input [formControl]="priceControl" type="number" placeholder="Enter a bounty"
+    matInput required>
+    <mat-error *ngIf="priceControl.invalid && priceControl.errors.required" translate>
+        Price is mandatory.
+    </mat-error>
+</mat-form-field>
+
+
+<mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Description</mat-label>
+    <!-- <input [formControl]="descriptionControl" type="text" placeholder="Enter a description"
+    matInput required> -->
+    <textarea matInput rows="4" [formControl]="descriptionControl" placeholder="Enter a description"></textarea>
+    <mat-error *ngIf="descriptionControl.invalid && descriptionControl.errors.required" translate>
+        Description is mandatory.
+    </mat-error>
+    <!-- <textarea matInput rows="4" formControlName="description" placeholder="Description"></textarea>
+    <mat-error *ngIf="form.get('description').invalid">Please enter a idea description.</mat-error> -->
+</mat-form-field>
+    
+<button (click)="saveBounty()" class="btn btn-primary my-5" [disabled]="descriptionControl.invalid || priceControl.invalid || titleControl.invalid" >Post Bounty</button>
+<!-- </form> -->
+</div>
+</div>

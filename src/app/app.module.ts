@@ -13,6 +13,12 @@ import { AngularMaterialModule } from './angular-material.module'
 import { IdeasModule } from './ideas/ideas.module'
 import { AboutComponent } from './about/about.component'
 import { FooterComponent } from './footer/footer.component'
+import { BidsComponent } from './bids/bids.component'
+import { MatTableDataSource, MatTableModule, MatInputModule } from '@angular/material'
+import { OffersComponent } from './offers/offers.component'
+import { BountyComponent } from './bounty/bounty.component'
+import { BountyCreateComponent } from './bounty-create/bounty-create.component'
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -20,7 +26,11 @@ import { FooterComponent } from './footer/footer.component'
     HeaderComponent,
     ErrorComponent,
     AboutComponent,
-    FooterComponent
+    FooterComponent,
+    BidsComponent,
+    OffersComponent,
+    BountyComponent,
+    BountyCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +38,10 @@ import { FooterComponent } from './footer/footer.component'
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
-    IdeasModule
+    IdeasModule,
+    MatTableModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -1,0 +1,17 @@
+<div class="col-md-6 mt-3 mx-auto">
+        <mat-expansion-panel *ngFor="let bounty of bounties" class="mb-4">
+        <mat-expansion-panel-header>
+            <mat-panel-title style="width: 50%;">
+                    {{ bounty.title }}
+            </mat-panel-title>
+            <mat-panel-description style="width: 50%;">
+                <strong>Price:</strong> Rs. {{ bounty.price }}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        
+        {{ bounty.description }}
+
+        <button mat-button color="warn" (click)="onDelete(bounty._id)"  *ngIf="userIsAuthenticated && userId === bounty.creator">DELETE</button>
+        </mat-expansion-panel>
+        <br>
+</div>

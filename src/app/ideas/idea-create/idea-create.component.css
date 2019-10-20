@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Aclonica&display=swap');
 mat-form-field,
 textarea {
   width: 100%;
@@ -18,4 +19,9 @@ input[type="file"] {
 
 .image-preview img {
   height: 100%;
+}
+
+.caption{
+  font-family: 'Aclonica', sans-serif;
+  color: rgb(13, 95, 212);
 }

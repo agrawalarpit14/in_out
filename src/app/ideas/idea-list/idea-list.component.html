@@ -1,19 +1,147 @@
+<!-- Search Bar -->
+
+
+<div class="rehomes-search-form-area wow fadeInUp" data-wow-delay="200ms">
+  <div class="container">
+      <div class="rehomes-search-form">
+        <form [formGroup]="form" (submit)="onSearch()" *ngIf="!isLoading">
+              <div class="row justify-content-center">
+                  <div class="col-12 col-lg-10">
+                      <div class="row">
+                          <div class="col-md-10">
+                              <input type="text" id="search" onkeyup="myFunction()" formControlName="search_string" class="form-control form-rounded" style="border-radius: 1rem;" 
+                              placeholder="Search for ideas by names, tags, keywords, labels ...">
+                          </div>
+                          <div class="col-md-2 mt-1 text-center">
+                              <button type="submit" class="btn text-white bg-success">Search</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+<!-- Extra Search Options-->
+<div class="rehomes-search-form-area wow fadeInUp bg-white" data-wow-delay="200ms">
+  <div class="container bg-white">
+      <div class="rehomes-search-form">
+          <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+                  <div class="row">
+                      <div class="col-12 col-md-6 col-lg-4 p-3">
+                          <select name="stage" id="stage" class="form-control">
+                              <option value="progress">Progress</option>
+                              <option value="fresh-hack">Fresh Hack</option>
+                              <option value="dev">Under Development </option>
+                              <option value="mvp">MVP</option>
+                          </select>
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 p-3">
+                          <select name="labels" id="labels" class="form-control">
+                              <option value="commercial">
+                                      Label
+                              </option>
+                              <option value="office">
+                                  help wanted
+                              </option>
+                              <option value="villa">up for grabs</option>
+                              <option value="apartment">open source</option>
+                          </select>
+                      </div>
+                      <!-- <div class="col-12 col-md-6 col-lg-4 p-3">
+                          <div class="slider-range mb-15">
+                              <div class="range-price">Hotness [0 - 10]</div>
+                              <div class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-min="0" data-max="10" data-unit="" data-value-min="0" data-value-max="10" data-label-result="Hotness">
+                                  <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                  <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                  <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                              </div>
+                          </div>
+                      </div> -->
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- **** End Search Form Area **** -->
+
+<!--Idea List-->
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-<mat-accordion multi="true" *ngIf="ideas.length > 0 && !isLoading">
-  <mat-expansion-panel *ngFor="let idea of ideas">
-    <mat-expansion-panel-header>
-      {{ idea.title }}
-    </mat-expansion-panel-header>
-    <div class="idea-image">
-      <img [src]="idea.imagePath" [alt]="idea.title">
-    </div>
-    <p>{{ idea.content }}</p>
-    <mat-action-row *ngIf="userIsAuthenticated && userId === idea.creator">
-      <a mat-button color="primary" [routerLink]="['/edit', idea.id]">EDIT</a>
-      <button mat-button color="warn" (click)="onDelete(idea.id)">DELETE</button>
-    </mat-action-row>
-  </mat-expansion-panel>
-</mat-accordion>
-<mat-paginator [length]="totalIdeas" [pageSize]="ideasPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
+
+
+
+<!-- Main Idea Area -->
+<div class="row col-12">
+<div class="col-8 mx-auto">
+  <div class="col-12" *ngFor="let idea of ideas" class="target">
+      <div class="single-property-area wow fadeInUp" data-wow-delay="200ms">
+        <div class="row p-0">
+              <!-- Idea Thumbnail -->
+            <div class="col-md-4 px-md-5 align-self-center" (click)="routeToProductDetail(idea.id)" >
+                <div class="property-thumb">
+                    <img [src]="idea.imagePath" alt="Idea Thumbnail">
+                </div>
+            </div>
+            <!--Idea Description -->
+            <div class="col-md-8 pl-0">
+                <div class="property-desc-area">
+                    <!-- Title, Hackathon, Date -->
+                    <div class="property-title-seller col-12">
+                        <!-- Title -->
+                        <div class="property-title" (click)="routeToProductDetail(idea.id)" >
+                            <h4>{{ idea.title }}</h4>
+                            <div class="row">
+                                <p class="col-md-4"><i class="fa fa-map-marker mx-1" aria-hidden="true"></i>{{ idea.associated_hackathon }}</p>
+                                <p class="col-md-4"><i class="fa fa-calendar mx-1" aria-hidden="true"></i>20/10/2019</p>
+                                <!-- labels -->
+                                <div class="bg-light mx-2 px-2 py-1 bg-rounded text-muted" *ngFor="let label of idea.labels">
+                                    {{ label }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info-area d-flex flex-wrap">
+                        <!-- Description -->
+                        <div class="col-12 mt-2">
+                            <a [routerLink]="['/view/', idea.id]">
+                            {{ idea.description }}
+                            <span class="text-muted">Read more...</span></a>
+                        </div>
+                        <!-- Badge -->
+                        <div class="col-12 my-3">
+                            <strong>#{{ idea.badge }}</strong> of <a href="https://hackinout.co/" style="color: blue">{{ idea.associated_hackathon }}</a>
+                        </div>
+                        <!-- Buttons -->
+                        <div class="col-12">
+                            <button target="_blank" (click)="openDemo(idea.demo_link)" type="button" class="btn btn-purple btn-labeled text-white mx-2">
+                              <span class="btn-label"><i class="fa fa-laptop mx-1"></i></span>
+                              Demo
+                            </button>
+  
+                            <button type="button" (click)="routeToProductDetail(idea.id)" class="btn btn-labeled btn-success mx-2">
+                                <span class="btn-label"><i class="fa fa-usd mx-1"></i></span>
+                                Make Offer
+                            </button>
+
+                        <mat-action-row *ngIf="userIsAuthenticated && userId === idea.creator">
+                            <!-- <a mat-button color="primary" [routerLink]="['/edit', idea.id]">EDIT</a> -->
+                            <button mat-button color="warn" (click)="onDelete(idea.id)">DELETE</button>
+                        </mat-action-row>
+
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+      </div>
+  </div>
+</div>
+  
+<div class="col-12">
+  <mat-paginator [length]="totalIdeas" [pageSize]="ideasPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
   *ngIf="ideas.length > 0"></mat-paginator>
-<p class="info-text mat-body-1" *ngIf="ideas.length <= 0 && !isLoading">No ideas added yet!</p>
+  <p class="info-text mat-body-1" *ngIf="ideas.length <= 0 && !isLoading">No ideas added yet!</p>
+</div>
