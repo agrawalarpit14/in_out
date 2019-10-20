@@ -1,27 +1,15 @@
 # Maverics
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+There are many hackathons going on in India and many young engineers come up with wonderful ideas. However, most of these winning hacks are often never taken forward. On the other side, there are enumerous entrepreneurs attempting to start up in India sharing similar ideas and interests. However, a good majority of them lack the developer resource to transform their idea into a technology driven innovation.
 
-## Development server
+Our Product is a web app, that attempts to bridge this gap between students and entrepreneurs. The winning ideas, along with the other ones are presented in our portal for startups to browse. A key thing to remember is WHILE IDEA matters in Hackathons EXECUTION matters in real world situations. Much like scholar.google.com that shows multiple papers in similar domains, we show multiple protoypes/solutions of similar ideas(in accordance with our startup's interests) and let them connect with engineers behind the best hacks. They can optionally offer a sum for the code/ tech behind the hack. This is a win win situation for engineers to earn quick cash and for startups to quickly access prototypes for their initial investing rounds. Best of all no hack is wasted!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The user scope and base for our product is ernomous and we would love to discuss more about our product in person. Our product is sort of the bridge between devfolio.co and angl.co
 
-## Code scaffolding
+# Challenges we ran into
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Following are the challenges we ran into: Nettigritty website was acting up, so we face many difficulties in configuring host server. We submitted our project with some Ip address instead of a proper domain name, provided for free by Go.co We had 5 minutes to submit this on devfolio.
 
-## Build
+# Technologies we used
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+nodejs, Angular, Mongo DB, express.js, CANVA
