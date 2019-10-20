@@ -1,4 +1,10 @@
-# Maverics
+# Idea Becho, 
+
+## Team: Maverics
+
+## ([YouTube Demo Link](https://www.youtube.com/watch?v=NCcI8Pi3SHg))
+
+## Mini MVP hosted on http://15.206.84.149, www.ideabecho.co
 
 There are many hackathons going on in India and many young engineers come up with wonderful ideas. However, most of these winning hacks are often never taken forward. On the other side, there are enumerous entrepreneurs attempting to start up in India sharing similar ideas and interests. However, a good majority of them lack the developer resource to transform their idea into a technology driven innovation.
 
